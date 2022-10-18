@@ -3,7 +3,7 @@
     <el-tab-pane label="General" name="general">
       <GeneralView/>
     </el-tab-pane>
-    <el-tab-pane label="Users" name="users">
+    <el-tab-pane label="Accounts" name="accounts">
       <UsersView/>
     </el-tab-pane>
     <el-tab-pane label="Commands" name="commands">
