@@ -20,7 +20,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const activeTab = ref('first')
+const activeTab = ref('general')
 </script>
 
 <style>
