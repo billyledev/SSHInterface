@@ -5,8 +5,8 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    BaseSide: typeof import('./components/layouts/BaseSide.vue')['default']
-    CommandsView: typeof import('./components/views/CommandsView.vue')['default']
+    BaseSide: typeof import('./../components/layouts/BaseSide.vue')['default']
+    CommandsView: typeof import('./../components/views/CommandsView.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
@@ -16,9 +16,9 @@ declare module '@vue/runtime-core' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
-    GeneralView: typeof import('./components/views/GeneralView.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
-    UsersView: typeof import('./components/views/UsersView.vue')['default']
+    GeneralView: typeof import('./../components/views/GeneralView.vue')['default']
+    HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
+    UsersView: typeof import('./../components/views/UsersView.vue')['default']
   }
 }
 

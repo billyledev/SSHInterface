@@ -42,7 +42,7 @@ export default defineConfig({
           importStyle: 'sass',
         }),
       ],
-      dts: 'src/components.d.ts',
+      dts: 'src/types/components.d.ts',
     }),
 
     // https://github.com/antfu/unocss
