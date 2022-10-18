@@ -5,13 +5,15 @@
     <el-table-column label="" align="center">
       <template #default="scope">
         <el-button link type="primary" @click="edit(scope.$index, scope.row)">Edit</el-button>
-        <el-button link type="primary">Remove</el-button>
+        <el-button link type="primary" @click="remove(scope.row)">Remove</el-button>
       </template>
     </el-table-column>
   </el-table>
 </template>
 
 <script lang="ts" setup>
+import { ElMessageBox } from 'element-plus';
+
 interface User {
   username: string;
   authtype: string;
@@ -20,7 +22,11 @@ interface User {
 const edit = (index: number, row: User) => {
   console.log(index);
   console.log(row);
-}
+};
+
+const remove = ({ username }: User) => {
+  ElMessageBox.confirm(`Do you really want to remove ${username}?`)
+};
 
 const tableData = [
   {
@@ -31,7 +37,7 @@ const tableData = [
     username: 'bar',
     authtype: 'key'
   },
-]
+];
 </script>
 
 <style>
