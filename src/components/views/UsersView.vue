@@ -23,10 +23,27 @@
       <el-radio v-for="(val, key) in authTypes" :label="key" size="large">
         {{val}}
       </el-radio>
+      <el-input
+        v-if="state.selected.authtype === 'pass'"
+        v-model="state.selected.password"
+        type="password"
+        placeholder="Password"
+        show-password
+      />
+      <el-input
+        v-else
+        v-model="state.selected.key"
+        :rows="4"
+        type="textarea"
+        placeholder="Public key"
+      />
     </el-radio-group>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="state.showEditDialog = false">Cancel</el-button>
+        <el-button type="success" @click="state.showEditDialog = false">
+          Save
+        </el-button>
       </span>
     </template>
   </el-dialog>
@@ -51,10 +68,18 @@ import { reactive } from 'vue';
 interface User {
   username: string;
   authtype: string;
+  password?: string;
+  key?: string;
 };
 
 interface AuthTypes {
   [key: string]: string
+};
+
+interface UsersState {
+  showEditDialog: boolean;
+  showDeleteConfirm: boolean;
+  selected: User;
 };
 
 const authTypes: AuthTypes = {
@@ -62,23 +87,29 @@ const authTypes: AuthTypes = {
   pubkey: 'Public key',
 };
 
-const state = reactive({
+const initialState: UsersState = {
   showEditDialog: false,
   showDeleteConfirm: false,
   selected: {
     username: '',
     authtype: '',
+    password: '',
+    key: '',
   },
-});
+};
 
-const tableData = [
+const state = reactive(initialState);
+
+const tableData: User[] = [
   {
     username: 'foo',
-    authtype: 'pass'
+    authtype: 'pass',
+    password: 'Password1',
   },
   {
     username: 'bar',
-    authtype: 'pubkey'
+    authtype: 'pubkey',
+    key: 'public key',
   },
 ];
 
