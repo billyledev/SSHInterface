@@ -71,16 +71,6 @@ const state = reactive({
   },
 });
 
-const edit = (user: User) => {
-  state.selected = user;
-  state.showEditDialog = true;
-};
-
-const remove = (user: User) => {
-  state.selected = user;
-  state.showDeleteConfirm = true;
-};
-
 const tableData = [
   {
     username: 'foo',
@@ -91,6 +81,20 @@ const tableData = [
     authtype: 'pubkey'
   },
 ];
+
+const selectUser = (user: User) => {
+  state.selected = { ...user };
+};
+
+const edit = (user: User) => {
+  selectUser(user);
+  state.showEditDialog = true;
+};
+
+const remove = (user: User) => {
+  selectUser(user);
+  state.showDeleteConfirm = true;
+};
 </script>
 
 <style>
