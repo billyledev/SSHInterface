@@ -23,21 +23,34 @@
       <el-radio v-for="(val, key) in authTypes" :label="key" size="large">
         {{val}}
       </el-radio>
-      <el-input
-        v-if="state.selected.authtype === 'pass'"
-        v-model="state.selected.password"
-        type="password"
-        placeholder="Password"
-        show-password
-      />
-      <el-input
-        v-else
-        v-model="state.selected.key"
-        :rows="4"
-        type="textarea"
-        placeholder="Public key"
-      />
     </el-radio-group>
+    <el-input
+      v-if="state.selected.authtype === 'pass'"
+      v-model="state.selected.password"
+      type="password"
+      placeholder="Password"
+      show-password
+    />
+    <el-upload
+      v-else
+      ref="uploadRef"
+      drag
+      action="https://localhost:8080/upload"
+      :auto-upload="false"
+      :limit="1"
+    >
+      <el-icon class="ep-icon--upload">
+        <upload-filled/>
+      </el-icon>
+      <div class="el-upload__text">
+        Drop your public key here or <em>click to upload</em>
+      </div>
+      <template #tip>
+        <div class="ep-upload__tip">
+          text/plain files with a size less than 10kb
+        </div>
+      </template>
+    </el-upload>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="state.showEditDialog = false">Cancel</el-button>
@@ -63,13 +76,14 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { ref, reactive } from 'vue';
+import { UploadFilled } from '@element-plus/icons-vue';
+import type { UploadInstance } from 'element-plus';
 
 interface User {
   username: string;
   authtype: string;
   password?: string;
-  key?: string;
 };
 
 interface AuthTypes {
@@ -94,11 +108,11 @@ const initialState: UsersState = {
     username: '',
     authtype: '',
     password: '',
-    key: '',
   },
 };
 
 const state = reactive(initialState);
+const uploadRef = ref<UploadInstance>();
 
 const tableData: User[] = [
   {
@@ -109,7 +123,6 @@ const tableData: User[] = [
   {
     username: 'bar',
     authtype: 'pubkey',
-    key: 'public key',
   },
 ];
 
