@@ -5,25 +5,33 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BaseDialog: typeof import('./../components/shared/BaseDialog.vue')['default']
     BaseSide: typeof import('./../components/layouts/BaseSide.vue')['default']
-    CommandsView: typeof import('./../components/views/CommandsView.vue')['default']
+    CommandsView: typeof import('./../components/views/commands/CommandsView.vue')['default']
+    CreateUserDialog: typeof import('./../components/views/users/dialogs/CreateUserDialog.vue')['default']
+    DeleteUserDialog: typeof import('./../components/views/users/dialogs/DeleteUserDialog.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCol: typeof import('element-plus/es')['ElCol']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElForm: typeof import('element-plus/es')['ElForm']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
+    ElRow: typeof import('element-plus/es')['ElRow']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
     ElUpload: typeof import('element-plus/es')['ElUpload']
-    GeneralView: typeof import('./../components/views/GeneralView.vue')['default']
+    GeneralView: typeof import('./../components/views/general/GeneralView.vue')['default']
     HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
-    UsersView: typeof import('./../components/views/UsersView.vue')['default']
+    UpdateUserDialog: typeof import('./../components/views/users/dialogs/UpdateUserDialog.vue')['default']
+    UsersView: typeof import('./../components/views/users/UsersView.vue')['default']
   }
 }
 
