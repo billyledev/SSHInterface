@@ -27,4 +27,8 @@ const activeTab = ref('general');
 .ep-tabs {
   width: 100%;
 }
+
+.ep-tabs__content {
+  padding: 1em;
+}
 </style>
