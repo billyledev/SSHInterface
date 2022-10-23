@@ -9,11 +9,6 @@
     <el-tab-pane label="Commands" name="commands">
       <CommandsView/>
     </el-tab-pane>
-    <el-tab-pane label="Task" name="fourth">
-      <div>
-        <HelloWorld msg="Hello Vue 3.0 + Element Plus + Vite" />
-      </div>
-    </el-tab-pane>
   </el-tabs>
 </template>
 
